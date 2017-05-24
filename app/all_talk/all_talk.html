@@ -1,0 +1,67 @@
+<div class="container release-zone" >
+    <div class="row">
+        <div class="col-md-10">
+            <div class="alert alert-info  alert-dismissible" role="alert">
+
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#/up_headImg" data-toggle="tooltip" data-placement="bottom" title="更换头像">
+                            <img class="media-object" ng-src={{headImgPath}} alt="我的头像" style="width:100px;height:100px;border-radius:50%">
+                        </a>
+                     </div>
+                    <div class="media-body">
+                        <form>
+                            <div class="form-group">
+                                <textarea class="form-control" style="height:100px" placeholder="想说点什么..." ng-model="content"></textarea>
+                            </div>
+                            <span ng-show="showInfo">发表成功！！！</span>
+                            <button type="button" class="btn btn-info pull-right" ng-click="postInfo()">发表</button>
+                         </form>
+                    </div>
+                </div> <!--media-->
+            </div> <!--alert-->
+        </div>  <!--col-md-10-->
+        <div class="col-md-10" >
+            <div id="myTab">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist" >
+                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">推荐说说</a></li>
+                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">最佳说说</a></li>
+                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">热门说说</a></li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="home">adsadasd</div>
+                    <div role="tabpanel" class="tab-pane" id="profile">asdadadasd</div>
+                    <div role="tabpanel" class="tab-pane" id="messages">asdadadasda</div>
+                </div>
+        </div>
+       </div>
+        <div class="col-md-10" id="content" ng-repeat="item in subjects">
+            <div class="alert alert-info" role="alert" style="margin-top:20px">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" >
+                            <img class="media-object" ng-src="{{item.headImg}}" alt="头像" style="width:50px;height:50px;border-radius:50%">
+                        </a>
+                    </div>
+                    <div class="media-body" >
+                            <h4>{{item.username}}</h4>
+                            <h6 >{{item.date}}</h6>
+                            <div>
+                                <p ng-show="item.content.length<100 || flag1" id="all">{{item.content}}<span ng-click="hideAll($event)" ng-show="flag1" >&nbsp;...收起全文&nbsp;<span class="glyphicon glyphicon-menu-up"></span></span></p>
+                                <p ng-show="item.content.length>100 && flag2" id="section">{{item.content.substr(0,100)}}<span ng-click="showAll($event)">&nbsp;...展示全文&nbsp;<span class="glyphicon glyphicon-menu-down"></span></span></p>
+                            </div>
+                            <a type="button" class="btn btn-default pull-right" style="margin-left:20px;margin-bottom:10px"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;赞 &nbsp; <span class="badge" >{{item.favours.length}}</span></a>
+                            <a type="button" class="btn btn-default pull-right" ><span class="glyphicon glyphicon-comment"></span>&nbsp;评论 &nbsp; <span class="badge">{{item.comment.length}}</span></a>
+                    </div>
+                </div> <!--media-->
+            </div> <!--alert-->
+        </div>  <!--col-md-10-->
+        <div class="col-md-10">
+            <button type="button" class="btn btn-default btn-lg btn-block" ng-click="loadMore()">{{buttonInfo}}</button>
+        </div>
+    </div> <!--row-->
+</div>  <!--container-->
+

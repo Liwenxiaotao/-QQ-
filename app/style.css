@@ -95,18 +95,120 @@ a{
     background: #D9EDF7;
     border-radius: 5px 5px 0 0;
 }
-#content .media-body p{
+.content{
+    padding:10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top:30px;
+    box-shadow: 0 0 10px #666;
+
+}
+.content .alert,.content .alert{
+    margin:0;
+}
+
+.content{
     font-family: "微软雅黑";
     font-size: 15px;
+}
+.talk .btn-default{
+    border: none;
+    color:#31708F
 }
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
     color:#31708f;
 }
-#content .media-body p span{
+.talk .media-body p span{
     cursor: pointer;
     color:#28a4c9;
 }
 .btn.btn-default.btn-lg.btn-block{
     background: #efefef;
 }
+.thumbnail{
+    cursor: pointer;
+}
+.comment .alert-default{
+    background: rgba(217,237,247,0.6);
+    margin-top:5px;
+}
+.comment{
+    color:#31708F
+}
+.comment .media-body h4{
+    font-size: 12px;
+}
+.comment table tr td,.comment table tr th{
+    padding:15px 30px
+}
+.comment .media-body h4 span{
+    color:#313D8F;
+    font-weight: bold;
+}
+/*成员列表*/
+.pager li{
+    cursor: pointer;
+ }
+.thumbnail:hover{
+    border:1px solid #31708f;
+    box-shadow: 0 0 10px #666;
+}
+.bg-info{
+    padding:5px 20px;
+    color:#666
+}
+/*chat*/
+.modal-body{
+    min-height: 200px;
+    max-height: 350px;
+    overflow-y: auto;
+}
+.modal-header{
+    background:#D9EDF7;
+}
+.modal-title{
+    color:#666
+}
+.modal-footer .input-group{
+    margin:0
+}
+.dialog-container{
+    position:relative;
+}
+.dialog-left ,.dialog-right{
+    margin-left:12px;
+    padding:0 10px;
+    border-radius: 5px;
+    width:auto;
+    max-width:none;
+    display:inline-block;
+    line-height: 30px;
+    background: #eee;
+}
 
+div.triangle-left{
+    position:absolute;
+    width: 0;
+    height: 0;
+    top:7px;
+    left:0;
+    border-top: 7px solid #fff;
+    border-right: 12px solid #eee;
+    border-bottom: 7px solid #fff;
+
+}
+.dialog-right{
+    margin-right:12px;
+    background:#B2E281;
+}
+div.triangle-right{
+    position:absolute;
+    width: 0;
+    height: 0;
+    top:7px;
+    right:0;
+    border-top: 7px solid #fff;
+    border-left: 12px solid #B2E281;
+    border-bottom: 7px solid #fff;
+
+}

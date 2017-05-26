@@ -1,0 +1,53 @@
+<div class="container" style="margin-top:80px">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">小小聊天室</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div ng-repeat="item in subject">
+                                <div class="media" ng-show="(item.username!=username)">
+                                    <div class="media-left">
+                                            <img class="media-object" ng-src="{{item.headImgPath}}" alt="头像" style="height:30px;width:30px">
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="dialog-container">
+                                                <div class="triangle-left"> </div>
+                                                <span class="dialog-left">{{item.word}}</span>
+                                        </div>
+                                    </div>
+                                </div><!--media-->
+                                <div class="media" ng-show="(item.username==username)">
+                                    <div class="media-body">
+                                        <div class="dialog-container">
+                                            <div class="dialog-right pull-right">
+                                                <div class="triangle-right"></div>
+                                                <span>{{item.word}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="media-right">
+                                        <img class="media-object" ng-src="{{item.headImgPath}}" alt="头像" style="height:30px;width:30px">
+                                    </div>
+                                </div><!--media-->
+                            </div>
+                        </div><!--modal-body-->
+                        <div class="modal-footer">
+
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="chatting..." ng-model="word">
+                                    <span class="input-group-btn">
+                                       <button class="btn btn-info" type="button" ng-click="send()" ng-disabled=(word.length==0)>发送</button>
+                                    </span>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

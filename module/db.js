@@ -80,9 +80,9 @@ exports.updateMany=function(collectionName,condition,updateData,callback){
        })
     })
 };
-exports.getSum=function(collectionName,callback){
+exports.getSum=function(collectionName,condition,callback){
     connectDB(function(err,db){
-        db.collection(collectionName).count({}).then(function(count){
+        db.collection(collectionName).count(condition).then(function(count){
             callback(count);
             db.close();
         })

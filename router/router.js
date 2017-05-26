@@ -7,6 +7,7 @@ var md5=require("../module/md5");
 var fs=require("fs");
 var gm =require("gm");
 var path=require("path");
+var ObjectId=require("mongodb").ObjectID;
 exports.doRegister=function(req,res,next){
     var form=new formidable.IncomingForm();
     form.parse(req,function(err,fields,files){
@@ -161,13 +162,15 @@ exports.getAllTalk=function(req,res,next){
             console.log(err);
             return
         }
+        var username=fields.username;
         var page=fields.page;
         var pageNum=fields.pageNum;
         var updateNum=fields.updateNum;
+        var condition=fields.showTalk=="/all_talk"?{}:{username:username};
         var sum=0;
-        db.getSum("talkList",function(count){
+        db.getSum("talkList",condition,function(count){
             sum=count;
-            db.find("talkList",{sort:{date:-1},page:page,pageNum:pageNum,updateNum:updateNum},function(err,result){
+            db.find("talkList",{condition:condition,sort:{date:-1},page:page,pageNum:pageNum,updateNum:updateNum},function(err,result){
                 res.send({
                     result:result,
                     sum:sum
@@ -176,4 +179,83 @@ exports.getAllTalk=function(req,res,next){
         });
 
     });
+};
+exports.postComment=function(req,res,next){
+     var form=new formidable.IncomingForm();
+     form.parse(req,function(err,fields,files){
+        if(err){
+            console.log(err);
+            return
+        }
+         var commentData=fields.comment;
+         var username=fields.username;
+         var id=fields.id;
+         var headImgPath=fields.headImgPath;
+         console.log(fields)
+        db.updateMany("talkList",{_id:ObjectId(id)},{$push:{comment:{
+            commentData:commentData,
+            username:username,
+            headImgPath:headImgPath,
+            date:new Date(),
+            id:id
+        }}},function(err,result){
+              if(err){
+                  console.log(err)
+              }
+            res.send("success")
+        })
+     })
+};
+exports.doFavour=function(req,res,next){
+    var form=new formidable.IncomingForm();
+    form.parse(req,function(err,fields,files){
+        if(err){
+            console.log(err);
+            return
+        }
+        var id=fields.id;
+        var username=fields.username;
+        var method=fields.method;
+        if(method=="push"){
+            db.updateMany("talkList",{_id:ObjectId(id)},{$push:{favours:username}},function(err,result){
+                if(err){
+                    console.log(err);
+                    return
+                }
+                res.send("success");
+            })
+        }
+        if(method=="pull"){
+            db.updateMany("talkList",{_id:ObjectId(id)},{$pull:{favours:username}},function(err,result){
+                if(err){
+                    console.log(err);
+                    return
+                }
+                res.send("success");
+            })
+        }
+    })
+};
+exports.getMemberList=function(req,res,next){
+   var form=new formidable.IncomingForm();
+   form.parse(req,function(err,fields,files){
+       if(err){
+           console.log(err);
+           return
+       }
+       var page=fields.page;
+       var pageNum=fields.pageNum;
+       db.getSum("users",{},function(count){
+            db.find("users",{page:page,pageNum:pageNum},function(err,result){
+                if(err){
+                    console.log(err);
+                    return
+                }
+                res.send({
+                    result:result,
+                    count:count
+                })
+            })
+       })
+   })
 };

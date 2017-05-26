@@ -1,0 +1,26 @@
+
+<div class="container" style="margin-top:80px">
+    <div class="row">
+        <div class="col-md-10">
+            <div class=" col-sm-2  col-md-2" ng-repeat="item in subject">
+                <div class="thumbnail">
+                    <img ng-src="../images/{{item.headImg}}" alt="头像">
+                    <div class="caption">
+                        <h5 class="text-center">{{item.username}}</h5>
+                    </div>
+                </div>
+            </div>
+         </div>
+        <div class="col-md-10">
+            <div class="bg-info">
+                <h5 class="text-right">第{{page}}/{{totalPage}}页，总共{{totalPage}}页</h5>
+            </div>
+            <nav aria-label="...">
+                <ul class="pager">
+                    <li ng-class="{disabled:page<=1}"><a ng-click="goPage(page-1)">«上一页</a></li>
+                    <li ng-class="{disabled:page>=totalPage}"><a ng-click="goPage(page+1)">下一页»</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

@@ -6,22 +6,26 @@ angular.module('myApp', [
     "lo_register",
     "all_talk",
     "up_headImg",
-    "crop_headImg"
+    "crop_headImg",
+    "member_list",
+    "chat"
 ]).config(["$routeProvider",function($routeProvider){
         $routeProvider.otherwise({redirectTo: '/lo_register'});
     }]).controller("myCtrl",["$scope","$window","$location",function($scope,$window,$location){
                 $scope.loginCondition=$window.localStorage.getItem("login") || false;
                 $scope.userName=$window.localStorage.getItem("username") || "";
                 $scope.$location=$location;
+                $scope.state="";
                 if($scope.loginCondition){
                    $location.path("/all_talk");
                 }
                 $scope.$watch("$location.path()",function(now,old){
-//                    if(now=="/lo_register"){
-//                        $scope.loginCondition=false;
-//                        $scope.userName="";
-//                        return;
-//                    }
+                    $scope.state=now;
+                    if(now=="/lo_register"){
+                        $scope.loginCondition=false;
+                        $scope.userName="";
+                        return;
+                    }
                     $scope.loginCondition=$window.localStorage.getItem("login") || false;
                     $scope.userName=$window.localStorage.getItem("username") || "";
                 });

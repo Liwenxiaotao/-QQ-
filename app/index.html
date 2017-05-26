@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
@@ -27,10 +26,10 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse" >
             <ul class="nav navbar-nav head-bar" ng-show="loginCondition">
-                <li class="active"><a href="#/all_talk">全部说说</a></li>
-                <li><a href="#about">我的说说</a></li>
-                <li><a href="#contact">现在说说</a></li>
-                <li><a href="#contact">成员列表</a></li>
+                <li ng-class={"active":(state=="/all_talk")||(state=="/up_headImg")||(state=="/crop_headImg")}><a href="#/all_talk">全部说说</a></li>
+                <li ng-class={"active":(state=="/my_talk")}><a href="#/my_talk" >我的说说</a></li>
+                <li ng-class={"active":(state=="/chat")}><a href="#/chat">现在说说</a></li>
+                <li ng-class={"active":(state.indexOf("/member_list")!=-1)}><a href="#/member_list/1">成员列表</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right head-bar" ng-show="loginCondition">
                 <li><a href="javascript:void(0)">欢迎，{{userName}}</a></li>
@@ -47,10 +46,13 @@
 <script src="bower_components/cropper/dist/cropper.js" type="text/javascript" charset="utf-8"></script>
 <script src="bower_components/angular/angular.js" type="text/javascript" charset="utf-8"></script>
 <script src="bower_components/angular-route/angular-route.js" type="text/javascript" charset="utf-8"></script>
+<script src="/socket.io/socket.io.js" type="text/javascript" charset="utf-8"></script>
 <script src="lo_register/lo_register.js" type="text/javascript" charset="utf-8"></script>
 <script src="all_talk/all_talk.js" type="text/javascript" charset="utf-8"></script>
 <script src="up_headImg/up_headImg.js" type="text/javascript" charset="utf-8"></script>
 <script src="crop_headImg/crop_headImg.js" type="text/javascript" charset="utf-8"></script>
+<script src="member_list/member_list.js" type="text/javascript" charset="utf-8"></script>
+<script src="chat/chat.js" type="text/javascript" charset="utf-8"></script>
 <script src="app.js" type="text/javascript" charset="utf-8"></script>
 <script src="service/formatDate.js" type="text/javascript" charset="utf-8"></script>
 </body>

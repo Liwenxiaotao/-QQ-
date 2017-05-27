@@ -35,13 +35,14 @@
             },function(err){
                 console.log(err)
             });
-            $scope.send=function(){
+            $scope.send=function(event){
                 socket.emit("chat",{
                     username:$scope.username,
                     word:$scope.word,
                     headImgPath:headImgPath
                 });
-                   $scope.word=""
+                   $scope.word="";
+                   $(event.target).parent().siblings().get(0).focus()
             };
             socket.on("chat",function(msg){
                 $timeout(function(){

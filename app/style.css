@@ -158,21 +158,21 @@ a{
     color:#666
 }
 /*chat*/
-.modal-body{
+#chat-room .modal-body{
     min-height: 200px;
     max-height: 350px;
     overflow-y: auto;
 }
-.modal-header{
+#chat-room .modal-header{
     background:#D9EDF7;
 }
-.modal-title{
+#chat-room .modal-title{
     color:#666
 }
-.modal-footer .input-group{
+#chat-room .modal-footer .input-group{
     margin:0
 }
-.dialog-container{
+#chat-room .dialog-container{
     position:relative;
 }
 .dialog-left ,.dialog-right{
@@ -212,3 +212,4 @@ div.triangle-right{
     border-bottom: 7px solid #fff;
 
 }
+/*clock*/

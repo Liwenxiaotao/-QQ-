@@ -1,4 +1,4 @@
-<div class="container" style="margin-top:80px">
+<div class="container" style="margin-top:80px" id="chat-room">
     <div class="row">
         <div class="col-md-12">
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -41,7 +41,7 @@
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="chatting..." ng-model="word">
                                     <span class="input-group-btn">
-                                       <button class="btn btn-info" type="button" ng-click="send()" ng-disabled=(word.length==0)>发送</button>
+                                       <button class="btn btn-info" type="button" ng-click="send($event)" ng-disabled=(word.length==0)>发送</button>
                                     </span>
                                 </div>
                         </div>

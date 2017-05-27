@@ -1,6 +1,6 @@
 <div class="container release-zone" >
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <div class="alert alert-info  alert-dismissible" role="alert">
 
                 <div class="media">
@@ -21,7 +21,8 @@
                 </div> <!--media-->
             </div> <!--alert-->
         </div>  <!--col-md-10-->
-        <div class="col-md-10" >
+
+        <div class="col-md-12" >
             <div id="myTab" ng-show="(showTalk!=='/my_talk')">
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs" role="tablist" >
@@ -41,15 +42,16 @@
                     <div role="tabpanel" class="tab-pane" id="profile">asdadadasd</div>
                     <div role="tabpanel" class="tab-pane" id="messages">asdadadasda</div>
                 </div>
+            </div>
         </div>
-       </div>
-        <div class="col-md-10"  ng-repeat="item in subjects">
+
+        <div class="col-md-12"  ng-repeat="item in subjects">
             <div class="content">
                 <div class="talk">
                     <div class="alert alert-info" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                        <!--<button type="button" class="close" data-dismiss="alert" aria-label="Close">-->
+                            <!--<span aria-hidden="true">&times;</span>-->
+                        <!--</button>-->
                         <div class="media">
                             <div class="media-left">
                                 <a href="javascript:void(0)" data-toggle="tooltip" data-placement="bottom" >
@@ -131,9 +133,13 @@
                 </div><!--comment-->
             </div><!--content-->
         </div>  <!--col-md-10-->
-        <div class="col-md-10">
+
+        <div class="col-md-12">
             <button type="button" class="btn btn-default btn-lg btn-block" ng-click="loadMore()" style="margin:30px 0">{{buttonInfo}}</button>
         </div>
+
+
     </div> <!--row-->
 </div>  <!--container-->
+
 
